@@ -11,12 +11,6 @@ namespace yvirata
         private List<Zvire> zvirata = new List<Zvire>();
         private int nextId = 1;
 
-        public Evidence()
-        {
-            Pridat("Rex", "Pes", 3);
-            Pridat("Micka", "Kočka", 2);
-        }
-
         public void Pridat(string jmeno, string druh, int vek)
         {
             zvirata.Add(new Zvire
