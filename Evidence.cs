@@ -40,5 +40,40 @@ namespace yvirata
             }
             return false;
         }
+
+        public List<Zvire> Filtrovat(string typFiltru, string filtr)
+        {
+            //name age kind
+            List<Zvire> zvirataFiltrovana = new List<Zvire>();
+            {
+                foreach(Zvire zvire in zvirata)
+                {
+                    switch (typFiltru)
+                    {
+                        case "name":
+                            if (zvire.Jmeno == filtr)
+                            {
+                                zvirataFiltrovana.Add(zvire);
+                            }
+                            break;
+
+                        case "age":
+                            if (zvire.Vek.ToString() == filtr)
+                            {
+                                zvirataFiltrovana.Add(zvire);
+                            }
+                            break;
+
+                        case "kind":
+                            if (zvire.Druh == filtr)
+                            {
+                                zvirataFiltrovana.Add(zvire);
+                            }
+                            break;
+                    }
+                }
+                return zvirataFiltrovana;
+            }
+        }
     }
 }

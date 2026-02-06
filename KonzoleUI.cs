@@ -26,39 +26,49 @@ namespace yvirata
                 Console.WriteLine("3) Filtrovat");
                 Console.WriteLine("4) Označit adopci");
                 Console.WriteLine("0) Konec");
-                Console.Write("Volba: ");
+                Console.Write("Volba:");
 
                 string volba = Console.ReadLine();
+                Console.WriteLine();
 
-                if (volba == "1") Pridat();
-                else if (volba == "2") Vypis();
+                if (volba == "1") {
+                    Pridat();
+                }
+                
+                else if (volba == "2")
+                {
+                    Vypis(); Console.ReadKey();
+                }
+
                 else if (volba == "3")
                 {
-                    Console.WriteLine("Podle ceho chcete filtrovat:");
-                    Console.WriteLine("1) Jmeno");
-                    Console.WriteLine("2) Vek");
+                    Console.WriteLine("Podle čeho chcete filtrovat:");
+                    Console.WriteLine("1) Jméno");
+                    Console.WriteLine("2) Věk");
                     Console.WriteLine("3) Druh");
-                    Console.Write(":");
+                    Console.Write("Volba:");
                     string filterTypeInput = Console.ReadLine();
                     string filterType = "";
-                    switch (filterType)
+                    switch (filterTypeInput)
                     {
                         case "1":
-                            filterType = "Name";
+                            filterType = "name";
                             break;
                         case "2":
-                            filterType = "Age";
+                            filterType = "age";
                             break;
                         case "3":
-                            filterType = "Kind";
+                            filterType = "kind";
                             break;
                         default:
-                            filterType = "Undefined"
+                            filterType = "undefined";
                             break;
                     }
                     Console.Write("Filtr:");
+                    string filter = Console.ReadLine();
 
-                    Vypis(true, filterType)
+                    Vypis(true, filterType, filter);
+                    Console.ReadKey();
                 }
                 
                 else if (volba == "4") Adopce();
@@ -69,21 +79,27 @@ namespace yvirata
 
         private void Pridat()
         {
-            Console.Write("Jméno: ");
+            Console.Write("Jméno:");
             string jmeno = Console.ReadLine();
 
-            Console.Write("Druh: ");
+            Console.Write("Druh:");
             string druh = Console.ReadLine();
 
             int vek;
             while (true)
             {
-                Console.Write("Věk: ");
+                Console.Write("Věk:");
                 if (int.TryParse(Console.ReadLine(), out vek) && vek >= 0)
                     break;
             }
 
-            evidence.Pridat(jmeno, druh, vek);
+            Console.Write("\nJste si o údajech jisti?\n(a/n):");
+            string Jistost = Console.ReadLine();
+
+            if(Jistost.ToLower() == "a")
+            {
+                evidence.Pridat(jmeno, druh, vek);
+            }
         }
 
         private void Vypis(bool filter = false, string filterType="", string filterValue="")
@@ -101,17 +117,17 @@ namespace yvirata
                 zvirataList = evidence.Filtrovat(filterType, filterValue);
             }
 
-                Console.WriteLine("\nID | Jméno | Druh | Věk | Adoptováno");
+            Console.WriteLine("ID | Jméno | Druh | Věk | Adoptováno");
             foreach (Zvire z in zvirataList)
             {
                 Console.WriteLine($"{z.Id} | {z.Jmeno} | {z.Druh} | {z.Vek} | {(z.Adoptovano ? "ANO" : "NE")}");
             }
-            Console.ReadKey();
         }
 
         private void Adopce()
         {
-            Console.Write("ID zvířete: ");
+            Vypis();
+            Console.Write("\nID zvířete:");
             if (int.TryParse(Console.ReadLine(), out int id))
             {
                 Console.WriteLine(
@@ -119,6 +135,10 @@ namespace yvirata
                     ? "Zvíře adoptováno."
                     : "Nelze provést."
                 );
+            }
+            else
+            {
+                Console.Write("Nelze provést.");
             }
             Console.ReadKey();
         }
