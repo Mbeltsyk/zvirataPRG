@@ -1,0 +1,7 @@
+H:\PRG\IT3B\Společná práce\zvirataPRG\obj\Debug\yvirata.csproj.AssemblyReference.cache
+H:\PRG\IT3B\Společná práce\zvirataPRG\obj\Debug\yvirata.csproj.CoreCompileInputs.cache
+H:\PRG\IT3B\Společná práce\zvirataPRG\bin\Debug\yvirata.exe.config
+H:\PRG\IT3B\Společná práce\zvirataPRG\bin\Debug\yvirata.exe
+H:\PRG\IT3B\Společná práce\zvirataPRG\bin\Debug\yvirata.pdb
+H:\PRG\IT3B\Společná práce\zvirataPRG\obj\Debug\yvirata.exe
+H:\PRG\IT3B\Společná práce\zvirataPRG\obj\Debug\yvirata.pdb
