@@ -117,10 +117,23 @@ namespace yvirata
         private void Vypis()
         {
             Console.WriteLine("\nID | Jméno | Druh | Věk | Adoptováno | Pohlaví | Zdravotní stav | Poznámka");
-            foreach (Zvire z in evidence.Vsechna())
+
+            List<Zvire> zvirataList;
+
+
+            if (!filter)
+            {
+                zvirataList = evidence.Vsechna();
+            }
+            else
+            {
+                zvirataList = evidence.Filtrovat(filterType, filterValue);
+            }
+            foreach (Zvire z in zvirataList)
             {
                 Console.WriteLine($"{z.Id} | {z.Jmeno} | {z.Druh} | {z.Vek} | {(z.Adoptovano ? "ANO" : "NE")} | {z.Pohlavi} | {z.ZdravotniStav} | {z.Poznamka}");
             }
+            
             Console.ReadKey();
         }
 
